@@ -32,27 +32,39 @@
             <div class="row mt-5 justify-content-center" data-aos="fade-up">
                 <div class="col-lg-4">
                     <h2>Login Your Account</h2><br>
+
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+
                     <form action="" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" name="username" class="form-control" id="username" placeholder="Your username"/>
+                            <input type="text" name="username" class="form-control" id="username"
+                                   placeholder="Your username"/>
                             <div class="validate"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Your Password"/>
+                            <input type="password" name="password" class="form-control" id="password"
+                                   placeholder="Your Password"/>
                             <div class="validate"></div>
 
                         </div>
 
-                        <small>Forgot My <a href="{% url 'forgetpassword' %}" > Password</a> </small>
+                        <small>Forgot My <a href="{% url 'forgetpassword' %}"> Password</a> </small>
 
 
                         <div class="text-center">
                             <button class="btn btn-success" type="submit">Login</button>
                         </div>
                     </form>
-                       <br>
+                    <br>
                     <small>Don't have an Account<a href="{% url 'registration' %}"> Register Here</a></small>
 
                 </div>
